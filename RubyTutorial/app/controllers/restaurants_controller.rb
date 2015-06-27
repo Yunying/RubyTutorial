@@ -1,10 +1,19 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
+  before_action :authenticate_user!
+
   # GET /restaurants
   # GET /restaurants.json
   def index
     @restaurants = Restaurant.all
+  end
+
+  def searchyelp
+    @restaurants = Restaurant.all
+    @data = params[:text1]
+
+
   end
 
   # GET /restaurants/1
@@ -14,6 +23,7 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/new
   def new
+
     @restaurant = Restaurant.new
   end
 
