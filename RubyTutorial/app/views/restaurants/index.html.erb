@@ -14,13 +14,12 @@ window.location = this.dataset.link
 })
 </script>
 
-<table class="table table-striped table-hover restaurant-list">
+<table class="table table-striped table-hover restaurant-list" style="text-align: left;">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:address) %></th>
       <th><%= model_class.human_attribute_name(:tag) %></th>
-      <th><%= model_class.human_attribute_name(:zipcode) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -30,7 +29,6 @@ window.location = this.dataset.link
         <td><%= restaurant.name %></td>
         <td><%= restaurant.address %></td>
         <td><%= restaurant.tag %></td>
-        <td><%= restaurant.zipcode %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_restaurant_path(restaurant), :class => 'btn btn-default btn-xs' %>

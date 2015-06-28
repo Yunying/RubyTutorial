@@ -11,14 +11,7 @@ class StaticPagesController < ApplicationController
     	@user_name = params[:name]
     	@user_email = params[:email]
     	@user_message = params[:message]
-    	mail = Mail.new do
- 		 from    'yunyingtu@gmail.com'
- 		 to      'yinyic@usc.edu'
- 		 subject 'This is a test email'
-		 body    'test'
-		end
-		mail.to_s
-
+        ContactMailer.contact_email.deliver_now!
     end
 end
 
