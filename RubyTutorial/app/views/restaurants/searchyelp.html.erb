@@ -54,6 +54,7 @@
 						<%= s.hidden_field :name, value: business.name %>
 						<%= s.hidden_field :address, value: business.location.display_address %>
 						<%= s.hidden_field :tag, value: @business_category %>
+          			    <%= s.hidden_field :zipcode, value:business.location.postal_code %>
 						<%= s.button :submit, "Add to List", :class => 'btn btn-info btn-block'%> 
 					<% end %>
 

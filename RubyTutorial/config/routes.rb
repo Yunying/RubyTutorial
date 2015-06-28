@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :notes
   resources :restaurants do
     collection do
       get 'searchyelp'
@@ -7,8 +8,13 @@ Rails.application.routes.draw do
 
     member do
       get 'open_yelp'
+      get 'addnote'
     end
   end
+
+  get '/contact' => 'static_pages#contact'
+  get '/email' => 'static_pages#email'
+  post '/contact' => 'static_pages#email'
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.

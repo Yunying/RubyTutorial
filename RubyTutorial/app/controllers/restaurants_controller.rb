@@ -6,7 +6,11 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.json
   def index
-    @restaurants = Restaurant.all
+    @restaurants = current_user.restaurants
+  end
+
+  def addnote
+
   end
 
   def searchyelp
@@ -32,6 +36,8 @@ class RestaurantsController < ApplicationController
     @size = @restaurants.size
     rand = random.rand(@size)+1
     @choice = @restaurants.find(rand)
+    rescue ActiveRecord::RecordNotFound => e
+      @choice = @restaurants.find(2)
     @newitem = Restaurant.new
   end
 
@@ -51,14 +57,21 @@ class RestaurantsController < ApplicationController
   end
 
   def open_yelp
+    redirected = false
     @restaurant = Restaurant.find(params[:id])
-    @response = Yelp.client.search('Los Angeles', { term: @restaurant.name })
+    @restaurants = Restaurant.all
+    @response = Yelp.client.search('Seattle', { term: @restaurant.name })
     @list = @response.businesses
     @list.each do |item|
       if item.location.postal_code == @restaurant.zipcode
+        redirected = true
         redirect_to item.url
         return
       end
+    end
+
+    if redirected == false
+      redirect_to restaurants_path
     end
   end
 
@@ -66,6 +79,7 @@ class RestaurantsController < ApplicationController
   # POST /restaurants.json
   def create
     @restaurant = Restaurant.new(restaurant_params)
+    @restaurant.user_id = current_user.id
 
     respond_to do |format|
       if @restaurant.save
