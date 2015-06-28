@@ -43,6 +43,7 @@ class RestaurantsController < ApplicationController
   end
 
   def random
+    @newnote = Note.new
     @restaurants = Restaurant.all
     random = Random.new
     @size = @restaurants.size
@@ -51,7 +52,7 @@ class RestaurantsController < ApplicationController
     rescue ActiveRecord::RecordNotFound => e
       @choice = @restaurants.find(2)
     @newitem = Restaurant.new
-    @newnote = Note.new
+    
   end
 
 
