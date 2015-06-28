@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     member do
       get 'open_yelp'
       get 'addnote'
+      post 'addnote'
     end
   end
 

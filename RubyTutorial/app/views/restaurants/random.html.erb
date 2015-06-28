@@ -13,6 +13,16 @@
 	<h3 class="random-address">
 		<%= @choice.address %>
 	</h3>
+
+  <div class="panel-group" style="margin-top: 30px;">
+    <% @choice.notes.each do |note| %>  
+      <div class="panel panel-info">
+        <div class="panel-heading"><%= note.created_at%></div>
+        <div class="panel-body"><%= note.contect%></div>
+      </div>
+    <% end %>
+
+  <div>
 	
 </div>
 
@@ -26,4 +36,17 @@
       <button class="btn btn-large btn-info yelp-button" type="button">View My Notes</button>
     </div>
 
+</div>
+
+<div class="row"></div>
+
+<div style="display:inline-block; width:800px;">
+  <%= simple_form_for @newnote, :url => addnote_restaurant_path do |f| %>
+        <div class="form-group" style="margin-top: 30px;">
+          <%= f.input :contect,  as: :text, input_html: { class: 'span12' }, label: false, placeholder: 'Things to remember...' %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :restaurant_id, value: @choice.id %>
+          <%= f.button :submit, :class => 'btn btn-primary btn-lg' %>
+        </div>                       
+  <% end %>
 </div>

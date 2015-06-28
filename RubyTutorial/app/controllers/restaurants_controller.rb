@@ -10,7 +10,19 @@ class RestaurantsController < ApplicationController
   end
 
   def addnote
-
+    @note = Note.new(note_params)
+    rid = @note.restaurant_id
+    @restaurants = Restaurant.all
+    @restaurant = @restaurants.find(rid)
+    respond_to do |format|
+      if @note.save
+        format.html { redirect_to @restaurant, notice: 'Note was successfully created.' }
+        format.json { render :show, location: @restaurant }
+      else
+        format.html { render :new }
+        format.json { render json: @restaurant.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def searchyelp
@@ -31,12 +43,16 @@ class RestaurantsController < ApplicationController
     rescue ActiveRecord::RecordNotFound => e
       @choice = @restaurants.find(2)
     @newitem = Restaurant.new
+    @newnote = Note.new
   end
 
 
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
+    @newnote = Note.new
+    @restaurant = Restaurant.all.find(params[:id])
+    @si = Note.all.size
   end
 
   # GET /restaurants/new
@@ -117,5 +133,9 @@ class RestaurantsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
       params.require(:restaurant).permit(:name, :address, :tag, :zipcode)
+    end
+
+    def note_params
+      params.require(:note).permit(:contect, :restaurant_id, :user_id)
     end
 end

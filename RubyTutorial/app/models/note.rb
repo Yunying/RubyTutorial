@@ -1,3 +1,4 @@
 class Note < ActiveRecord::Base
-	belongs_to :user, :restaurant
+	belongs_to :user
+	belongs_to :restaurant
 end
