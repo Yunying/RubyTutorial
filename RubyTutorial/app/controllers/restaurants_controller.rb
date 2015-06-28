@@ -23,6 +23,7 @@ class RestaurantsController < ApplicationController
     @size = @restaurants.size
     rand = random.rand(@size)+1
     @choice = @restaurants.find(rand)
+    @newitem = Restaurant.new
   end
 
 
@@ -33,7 +34,6 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/new
   def new
-    5
     @restaurant = Restaurant.new
   end
 

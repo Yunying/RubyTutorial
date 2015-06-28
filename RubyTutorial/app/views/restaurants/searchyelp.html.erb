@@ -1,9 +1,9 @@
 <%- model_class = Restaurant -%>
 <div class="page-header">
   <h1><%=t '.title', :default => [ 'Search my restaurant on Yelp'], :model => model_class.model_name.human.titleize %></h1>
- <!--  <p>
+  <p>
   	<%= @r %>
-  </p> -->
+  </p> 
 </div>
 
 
@@ -31,11 +31,39 @@
       	<div class="panel-heading"><%= business.name%></div>
      	<div class="panel-body">
      		<div class="row">
+
  				 <div class="col-sm-3">
-          <%= image_tag business.image_url %>
+ 				 	<%=image_tag business.image_url%>
  				 </div>
- 				 <div class="col-sm-6">.col-md-6</div>
- 				 <div class="col-sm-3">.col-md-3</div>
+
+ 				 <div class="col-sm-6">
+ 				 	// <script>
+ 				 	// 	var str = "<%= business.location.address%>";
+ 				 	// 	var res = str.split("[");
+ 				 	// 	document.write(res[1]);
+ 				 	// </script>
+ 				 	<%= business.location.address%><br>
+ 				 	<%= business.location.city%><br>
+ 				 	<%= business.location.state_code%>
+ 				 	<%= business.location.postal_code%> <br><br>
+ 				 	<%=image_tag business.rating_img_url%>
+
+ 				 </div>
+
+ 				 <div class="col-sm-3">
+						<%= simple_form_for @newitem do |s| %>
+						<%= s.hidden_field :name, value: business.name %>
+						<%= s.hidden_field :address, value: business.location.display_address %>
+						<%= s.hidden_field :tag, value: business.url %>
+						<%= s.button :submit, :class => 'btn btn-default btn-block'%> 
+					<% end %>
+
+					<br>
+ 				 	
+  					<button type="button" class="btn btn-danger btn-block">
+  						View on Yelp
+  					</button>
+ 				 </div>
 			</div>
 
      	</div>
