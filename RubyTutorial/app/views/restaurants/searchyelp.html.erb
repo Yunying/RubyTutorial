@@ -28,7 +28,9 @@
         <td><%= business.name %></td>
       </tr> -->
       <div class="panel panel-default">
-      	<div class="panel-heading"><%= business.name%></div>
+      	<div class="panel-heading">
+      		<font size="4" face="times"><%= business.name%></font>
+      	</div>
      	<div class="panel-body">
      		<div class="row">
 
@@ -37,21 +39,22 @@
  				 </div>
 
  				 <div class="col-sm-6">
- 				 	<%= business.location.address%><br>
+ 				 	<font size="3">
+ 				 	<%= @business_name%><br>
  				 	<%= business.location.city%><br>
  				 	<%= business.location.state_code%>
  				 	<%= business.location.postal_code%> <br><br>
- 				 	<%=image_tag business.rating_img_url%>
+ 					 </font>
+ 				 	<%=image_tag business.rating_img_url_large%>
 
  				 </div>
 
  				 <div class="col-sm-3">
 						<%= simple_form_for @newitem do |s| %>
-            <%= s.hidden_field :id, value: 1 %>
 						<%= s.hidden_field :name, value: business.name %>
 						<%= s.hidden_field :address, value: business.location.display_address %>
-						<%= s.hidden_field :tag, value: business.categories %>
-            <%= s.hidden_field :zipcode, value:business.location.postal_code %>
+						<%= s.hidden_field :tag, value: @business_category %>
+          			    <%= s.hidden_field :zipcode, value:business.location.postal_code %>
 						<%= s.button :submit, "Add to List", :class => 'btn btn-info btn-block'%> 
 					<% end %>
 
