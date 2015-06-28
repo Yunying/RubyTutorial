@@ -14,6 +14,14 @@ class RestaurantsController < ApplicationController
     @data = params[:text1]
     @response = Yelp.client.search("Seattle", {term: @data})
     @r = @response.businesses
+    @r.each do |item|
+      @business_name = item.location.address[0]
+      @business_category = ""
+      @categories = item.categories
+      @categories.each do |category|
+        @business_category = @business_category + category[1]+" "
+      end
+    end  
     @newitem = Restaurant.new
     @displaytext = "Search result for " + @data
   end
