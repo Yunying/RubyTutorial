@@ -12,8 +12,14 @@ class RestaurantsController < ApplicationController
   def searchyelp
     @restaurants = Restaurant.all
     @data = params[:text1]
-    @response = Yelp.client.search(@data)
+    @response = Yelp.client.search("Seattle", {term: @data})
     @r = @response.businesses
+    @newitem = Restaurant.new
+  end
+
+  def create_from_yelp
+    @restaurant = Restaurant.new
+    redirect_to @restaurant
   end
 
 

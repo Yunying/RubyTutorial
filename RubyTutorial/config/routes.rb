@@ -3,6 +3,9 @@ Rails.application.routes.draw do
     collection do
       get 'searchyelp'
     end
+    member do
+      get 'create_from_yelp'
+    end
   end
 
   devise_for :users
