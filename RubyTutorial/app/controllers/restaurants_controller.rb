@@ -13,7 +13,14 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
     @data = params[:text1]
 
+  end
 
+  def random
+    @restaurants = Restaurant.all
+    random = Random.new
+    @size = @restaurants.size
+    rand = random.rand(@size)+1
+    @choice = @restaurants.find(rand)
   end
 
   # GET /restaurants/1
