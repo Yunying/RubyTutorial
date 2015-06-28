@@ -12,6 +12,8 @@ class RestaurantsController < ApplicationController
   def searchyelp
     @restaurants = Restaurant.all
     @data = params[:text1]
+    @response = Yelp.client.search(@data)
+    @r = @response.businesses
 
   end
 
@@ -22,6 +24,7 @@ class RestaurantsController < ApplicationController
     rand = random.rand(@size)+1
     @choice = @restaurants.find(rand)
   end
+
 
   # GET /restaurants/1
   # GET /restaurants/1.json
