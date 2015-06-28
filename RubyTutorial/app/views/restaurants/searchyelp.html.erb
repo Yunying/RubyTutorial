@@ -47,9 +47,11 @@
 
  				 <div class="col-sm-3">
 						<%= simple_form_for @newitem do |s| %>
+            <%= s.hidden_field :id, value: 1 %>
 						<%= s.hidden_field :name, value: business.name %>
 						<%= s.hidden_field :address, value: business.location.display_address %>
-						<%= s.hidden_field :tag, value: business.url %>
+						<%= s.hidden_field :tag, value: business.categories %>
+            <%= s.hidden_field :zipcode, value:business.location.postal_code %>
 						<%= s.button :submit, "Add to List", :class => 'btn btn-info btn-block'%> 
 					<% end %>
 

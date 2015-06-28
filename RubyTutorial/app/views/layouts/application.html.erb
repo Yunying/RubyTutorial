@@ -29,7 +29,10 @@
         
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="/restaurants"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li>
+          <%= link_to "My Profile", contact_path,:class => "glyphicon glyphicon-log-out" %>
+        </li>
         <li>
           <%= link_to "Log out", destroy_user_session_path, :method => :delete, :class => "glyphicon glyphicon-log-out" %>
         </li>
