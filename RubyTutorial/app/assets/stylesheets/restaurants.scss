@@ -7,6 +7,74 @@
   margin-left: 150px;
 }
 
-.add-new-button {
+.randombutton{
+	position: relative;
+    color: rgba(255,255,255,1);
+    text-decoration: none;
+    background-color: rgba(219,87,5,1);
+    font-family: 'Yanone Kaffeesatz';
+    font-weight: 700;
+    font-size: 4em;
+    display: block;
+    padding: 4px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0px 9px 0px rgba(219,31,5,1), 0px 9px 25px rgba(0,0,0,.7);
+    -moz-box-shadow: 0px 9px 0px rgba(219,31,5,1), 0px 9px 25px rgba(0,0,0,.7);
+    box-shadow: 0px 9px 0px rgba(219,31,5,1), 0px 9px 25px rgba(0,0,0,.7);
+    margin: 100px auto;
+	width: 500px;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
 	
+	-webkit-transition: all .1s ease;
+	-moz-transition: all .1s ease;
+	-ms-transition: all .1s ease;
+	-o-transition: all .1s ease;
+	transition: all .1s ease;
+}
+
+.foodbackground {
+	background-image:url('/assets/food_background.jpg');
+}
+
+.randombutton:visited {
+	color: rgba(255,255,255,1);
+}
+
+.randombutton:active {
+    -webkit-box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
+    -moz-box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
+    box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
+    position: relative;
+    top: 6px;
+}
+
+.add-new-button.visited {
+	color: rgba(255,255,255,1);
+}
+
+.random-name {
+    margin-top: 20px;
+    text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
+                 0px -5px 35px rgba(255,255,255,0.3);
+    text-align: center;
+    font-weight: 700;
+    font-size: 5em;
+}
+
+.random-address {
+    margin-top: 20px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 2em;
+}
+
+.yelp-button {
+    width: 200px;
+    height: 50px;
+    font-weight: 400;
+    font-size: 20px;
 }

@@ -1,6 +1,9 @@
 <%- model_class = Restaurant -%>
-<div class="jumbotron">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+<div class="jumbotron foodbackground">
+        <%= link_to "I WANT TO EAT",
+      random_restaurants_path,
+    :class => "randombutton animated infinite pulse" %>
+
 </div>
 
 <table class="table table-striped restaurant-list">
@@ -37,17 +40,19 @@
 </table>
 
 <div style="margin-left: 150px;">
-  <%= link_to "Add a restaurant",
-    new_restaurant_path,
-    :class => 'btn btn-primary add-new-button' %>
-
-  <%= link_to "Search for restaurant in Yelp",
-    searchyelp_restaurants_path,
-    :class => 'btn btn-primary add-new-button' %>
 </div>
 
-<form action = "/restaurants/searchyelp" >
-       <input class="input-small" type="text" name="text1" placeholder="Restaurant">
-       <br>
-       <button type="Submit" class='btn btn-primary add-new-button'>Search Yelp!</button>
-</form>
+<div class="row" style="margin-left: 140px; margin-right: 260px;">
+  <div class="col-xs-6 col-sm-4" >
+    <%= link_to "Add a restaurant",
+    new_restaurant_path,
+    :class => 'btn btn-primary add-new-button' %>
+  </div>
+   <div class="col-xs-6 col-sm-4"></div>
+  <div class="col-xs-6 col-sm-4" style="align:right;">
+    <form action = "/restaurants/searchyelp" class="form-inline">
+      <button type="Submit" class='btn btn-primary add-new-button pull-right' >Search Yelp!</button>
+      <input type="text" name="text1" placeholder="Restaurant" class="form-control pull-right">   
+    </form>
+  </div>
+</div>
