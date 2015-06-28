@@ -11,7 +11,6 @@ class StaticPagesController < ApplicationController
     	@user_name = params[:name]
     	@user_email = params[:email]
     	@user_message = params[:message]
-        ContactMailer.contact_email.deliver_now!
     end
 end
 
