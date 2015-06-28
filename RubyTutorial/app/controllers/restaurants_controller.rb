@@ -12,7 +12,7 @@ class RestaurantsController < ApplicationController
   def searchyelp
     @restaurants = Restaurant.all
     @data = params[:text1]
-    @response = Yelp.client.("Seattle", {term: @data})
+    @response = Yelp.client.search("Seattle", {term: @data})
     @r = @response.businesses
 
   end

@@ -10,19 +10,21 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Make A Choice</a>
+      <a class="navbar-brand" href="/">Make A Choice</a>
     </div>
     <div>
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Home</a></li>
-        <li><a href="#">Page 1</a></li>
-        <li><a href="#">MyLists</a></li> 
-        <li><a href="#">Page 3</a></li> 
-        <li><%= link_to "Log out", destroy_user_session_path, :method => :delete %></li>
+        <li><a href="#">Explore</a></li>
+        <li><a href="#">My Memories</a></li> 
+        <li><a href="#">Others</a></li> 
+        
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li>
+          <%= link_to "Log out", destroy_user_session_path, :method => :delete, :class => "glyphicon glyphicon-log-out" %>
+        </li>
       </ul>
     </div>
   </div>
