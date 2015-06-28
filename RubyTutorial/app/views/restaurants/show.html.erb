@@ -1,23 +1,28 @@
 <%- model_class = Restaurant -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+<div class="jumbotron foodbackground">
+        <%= link_to "BACK TO LIST!",
+      restaurants_path,
+    :class => "randombutton" %>
+
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @restaurant.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
-  <dd><%= @restaurant.address %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:tag) %>:</strong></dt>
-  <dd><%= @restaurant.tag %></dd>
-</dl>
+<div>
+  <h1 class="random-name">
+    <%= @restaurant.name %>
+  </h1>
+  <h3 class="random-address">
+    <%= @restaurant.address %>
+  </h3>
+  
+</div>
 
-<%= link_to t('.back', :default => t("helpers.links.back")),
-              restaurants_path, :class => 'btn btn-default'  %>
-<%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_restaurant_path(@restaurant), :class => 'btn btn-default' %>
-<%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              restaurant_path(@restaurant),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+<div class="row" style="margin-left: 340px; margin-right: 460px; margin-top: 50px;">
+  <div class="col-xs-6 col-sm-3"></div>
+    <div class="col-xs-6 col-sm-3" >
+      <button class="btn btn-large btn-danger yelp-button" type="button">View in Yelp</button>
+    </div>
+    <div class="col-xs-6 col-sm-3" >
+      <button class="btn btn-large btn-info yelp-button" type="button">View My Notes</button>
+    </div>
+    
+</div>

@@ -5,7 +5,8 @@
   <%= error_span(@restaurant[:address]) %>
   <%= f.input :tag %>
   <%= error_span(@restaurant[:tag]) %>
-
+  <%= f.input :zipcode %>
+  <%= error_span(@restaurant[:zipcode]) %>
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 restaurants_path, :class => 'btn btn-default' %>

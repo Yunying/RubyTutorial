@@ -4,6 +4,10 @@ Rails.application.routes.draw do
       get 'searchyelp'
       get 'random'
     end
+
+    member do
+      get 'open_yelp'
+    end
   end
 
   devise_for :users

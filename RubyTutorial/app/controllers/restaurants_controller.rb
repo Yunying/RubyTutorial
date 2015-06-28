@@ -12,7 +12,7 @@ class RestaurantsController < ApplicationController
   def searchyelp
     @restaurants = Restaurant.all
     @data = params[:text1]
-    @response = Yelp.client.search(@data)
+    @response = Yelp.client.("Seattle", {term: @data})
     @r = @response.businesses
 
   end
@@ -33,12 +33,24 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/new
   def new
-
+    5
     @restaurant = Restaurant.new
   end
 
   # GET /restaurants/1/edit
   def edit
+  end
+
+  def open_yelp
+    @restaurant = Restaurant.find(params[:id])
+    @response = Yelp.client.search('Los Angeles', { term: @restaurant.name })
+    @list = @response.businesses
+    @list.each do |item|
+      if item.location.postal_code == @restaurant.zipcode
+        redirect_to item.url
+        return
+      end
+    end
   end
 
   # POST /restaurants
@@ -89,6 +101,6 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      params.require(:restaurant).permit(:name, :address, :tag)
+      params.require(:restaurant).permit(:name, :address, :tag, :zipcode)
     end
 end
