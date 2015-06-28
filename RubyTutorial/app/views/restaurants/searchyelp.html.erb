@@ -28,7 +28,9 @@
         <td><%= business.name %></td>
       </tr> -->
       <div class="panel panel-default">
-      	<div class="panel-heading"><%= business.name%></div>
+      	<div class="panel-heading">
+      		<font size="4" face="times"><%= business.name%></font>
+      	</div>
      	<div class="panel-body">
      		<div class="row">
 
@@ -37,11 +39,13 @@
  				 </div>
 
  				 <div class="col-sm-6">
+ 				 	<font size="3">
  				 	<%= business.location.address%><br>
  				 	<%= business.location.city%><br>
  				 	<%= business.location.state_code%>
  				 	<%= business.location.postal_code%> <br><br>
- 				 	<%=image_tag business.rating_img_url%>
+ 					 </font>
+ 				 	<%=image_tag business.rating_img_url_large%>
 
  				 </div>
 
