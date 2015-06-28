@@ -19,7 +19,8 @@
 <div class="row" style="margin-left: 340px; margin-right: 460px; margin-top: 50px;">
   <div class="col-xs-6 col-sm-3"></div>
     <div class="col-xs-6 col-sm-3" >
-      <button class="btn btn-large btn-danger yelp-button" type="button">View in Yelp</button>
+      <%= link_to "View in Yelp",
+        open_yelp_restaurant_path(@restaurant.id),:class => "btn btn-large btn-danger yelp-button" %>
     </div>
     <div class="col-xs-6 col-sm-3" >
       <button class="btn btn-large btn-info yelp-button" type="button">View My Notes</button>

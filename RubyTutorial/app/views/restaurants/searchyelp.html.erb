@@ -1,6 +1,9 @@
 <%- model_class = Restaurant -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => [ 'Search my restaurant on Yelp'], :model => model_class.model_name.human.titleize %></h1> 
+<div class="jumbotron foodbackground", style="text-align: center;">
+  <h1>
+    <%= @displaytext %>
+  </h1>
+
 </div>
 
 
@@ -51,10 +54,9 @@
 					<% end %>
 
 					<br>
- 				 	
-  					<button type="button" class="btn btn-danger btn-block">
-  						View on Yelp
-  					</button>
+
+            <%= link_to "View in Yelp",
+            business.url,:class => "btn btn-danger btn-block" %>
  				 </div>
 			</div>
 

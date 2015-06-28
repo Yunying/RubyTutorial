@@ -6,7 +6,15 @@
 
 </div>
 
-<table class="table table-striped restaurant-list">
+<script>
+jQuery(function($) {
+$("tr[data-link]").click(function() {
+window.location = this.dataset.link
+});
+})
+</script>
+
+<table class="table table-striped table-hover restaurant-list">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
@@ -19,7 +27,7 @@
   </thead>
   <tbody>
     <% @restaurants.each do |restaurant| %>
-      <tr>
+      <tr data-link="<%= restaurant_path(restaurant) %>">
         <td><%= link_to restaurant.id, restaurant_path(restaurant) %></td>
         <td><%= restaurant.name %></td>
         <td><%= restaurant.address %></td>
