@@ -14,7 +14,7 @@ class RestaurantsController < ApplicationController
     @data = params[:text1]
     @response = Yelp.client.search("Seattle", {term: @data})
     @r = @response.businesses
-
+    @newitem = Restaurant.new
   end
 
   def random
